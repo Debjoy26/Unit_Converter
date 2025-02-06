@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class='container'>
+        <h2>Length Converter</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="value" placeholder="Enter value" required value="{{ request.POST.value }}">
+            <label for="from_unit">From Unit:</label>
+            <select name="from_unit">
+                <option value="millimeter" {% if from_unit == "millimeter" %}selected{% endif %}>Millimeter</option>
+                <option value="centimeter" {% if from_unit == "centimeter" %}selected{% endif %}>Centimeter</option>
+                <option value="meter" {% if from_unit == "meter" %}selected{% endif %}>Meter</option>
+                <option value="kilometer" {% if from_unit == "kilometer" %}selected{% endif %}>Kilometer</option>
+                <option value="inch" {% if from_unit == "inch" %}selected{% endif %}>Inch</option>
+                <option value="foot" {% if from_unit == "foot" %}selected{% endif %}>Foot</option>
+                <option value="yard" {% if from_unit == "yard" %}selected{% endif %}>Yard</option>
+                <option value="mile" {% if from_unit == "mile" %}selected{% endif %}>Mile</option>
+            </select>
+            <label for="to_unit">To Unit:</label>
+            <select name="to_unit">
+                <option value="millimeter" {% if to_unit == "millimeter" %}selected{% endif %}>Millimeter</option>
+                <option value="centimeter" {% if to_unit == "centimeter" %}selected{% endif %}>Centimeter</option>
+                <option value="meter" {% if to_unit == "meter" %}selected{% endif %}>Meter</option>
+                <option value="kilometer" {% if to_unit == "kilometer" %}selected{% endif %}>Kilometer</option>
+                <option value="inch" {% if to_unit == "inch" %}selected{% endif %}>Inch</option>
+                <option value="foot" {% if to_unit == "foot" %}selected{% endif %}>Foot</option>
+                <option value="yard" {% if to_unit == "yard" %}selected{% endif %}>Yard</option>
+                <option value="mile" {% if to_unit == "mile" %}selected{% endif %}>Mile</option>
+            </select>
+            <button type="submit">Convert</button>
+        </form>
+        {% if result is not None %}
+            <h3>Converted Value: {{ result }} {{ request.POST.to_unit }}</h3>
+            
+        {% endif %}
+        <div>
+            <h3>Other converters:</h3>
+            <a href="{% url 'weight_conversion' %}">Weight Converter</a> |
+            <a href="{% url 'temperature_conversion' %}">Temperature Converter</a> |
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Debjoy Sarkar. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

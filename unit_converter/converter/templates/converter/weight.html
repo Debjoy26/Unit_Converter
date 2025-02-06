@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class='container'>
+        <h2>Weight Converter</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="value" placeholder="Enter value" required value="{{ request.POST.value }}">
+            
+            <label for="from_unit">From Unit:</label>
+            <select name="from_unit" id="from_unit">
+                <option value="milligram" {% if from_unit == "milligram" %}selected{% endif %}>Milligram</option>
+                <option value="gram" {% if from_unit == "gram" %}selected{% endif %}>Gram</option>
+                <option value="kilogram" {% if from_unit == "kilogram" %}selected{% endif %}>Kilogram</option>
+                <option value="ounce" {% if from_unit == "ounce" %}selected{% endif %}>Ounce</option>
+                <option value="pound" {% if from_unit == "pound" %}selected{% endif %}>Pound</option>
+            </select>
+
+            <label for="to_unit">To Unit:</label>
+            <select name="to_unit" id="to_unit">
+                <option value="milligram" {% if to_unit == "milligram" %}selected{% endif %}>Milligram</option>
+                <option value="gram" {% if to_unit == "gram" %}selected{% endif %}>Gram</option>
+                <option value="kilogram" {% if to_unit == "kilogram" %}selected{% endif %}>Kilogram</option>
+                <option value="ounce" {% if to_unit == "ounce" %}selected{% endif %}>Ounce</option>
+                <option value="pound" {% if to_unit == "pound" %}selected{% endif %}>Pound</option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+
+        {% if result is not None %}
+            <h3>Converted Value: {{ result }} {{ to_unit }}</h3>
+            
+        {% endif %}
+        
+        <div>
+            <h3>Navigate to other converters:</h3>
+            <a href="{% url 'length_conversion' %}">Length Converter</a> |
+            <a href="{% url 'temperature_conversion' %}">Temperature Converter</a> |
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Debjoy Sarkar. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

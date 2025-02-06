@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class='container'>
+        <h2>Temperature Converter</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="value" placeholder="Enter value" required value="{{ request.POST.value }}">
+            
+            <label for="from_unit">From Unit:</label>
+            <select name="from_unit" id="from_unit">
+                <option value="Celsius" {% if from_unit == "Celsius" %}selected{% endif %}>Celsius</option>
+                <option value="Fahrenheit" {% if from_unit == "Fahrenheit" %}selected{% endif %}>Fahrenheit</option>
+                <option value="Kelvin" {% if from_unit == "Kelvin" %}selected{% endif %}>Kelvin</option>
+            </select>
+
+            <label for="to_unit">To Unit:</label>
+            <select name="to_unit" id="to_unit">
+                <option value="Celsius" {% if to_unit == "Celsius" %}selected{% endif %}>Celsius</option>
+                <option value="Fahrenheit" {% if to_unit == "Fahrenheit" %}selected{% endif %}>Fahrenheit</option>
+                <option value="Kelvin" {% if to_unit == "Kelvin" %}selected{% endif %}>Kelvin</option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+
+        {% if result is not None %}
+            <h3>Converted Value: {{ result }} {{ to_unit }}</h3>
+            
+        {% endif %}
+        
+        <div>
+            <h3>Navigate to other converters:</h3>
+            <a href="{% url 'length_conversion' %}">Length Converter</a> |
+            <a href="{% url 'weight_conversion' %}">Weight Converter</a> |
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Debjoy Sarkar. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General body styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #8d9b0f, #51c451); /* Green Gradient */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container with fixed alignment */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Hover effect */
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* Heading styling */
+h2 {
+    font-size: 26px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input fields & select dropdowns */
+input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f8f9fa;
+    color: #333;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Focus effect */
+input:focus, select:focus {
+    border-color: greenyellow;
+    box-shadow: 0px 0px 8px rgba(0, 255, 13, 0.6);
+}
+
+/* Button Styling */
+button {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff5e62, #ff9966);
+    transform: scale(1.05);
+}
+
+/* Style for the result display */
+h3 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Conversion details */
+p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Links container */
+.links-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Links at the bottom */
+.links-container a {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 5px 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.links-container a:hover {
+    color: #ff5e62;
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1px;
+    background: #222;
+    color: white;
+    font-size: 7px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        max-width: 95%;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+

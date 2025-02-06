@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Unit Converter</h1>
+        <p>Select a conversion type:</p>
+        <div class="button-container">
+            <a href="{% url 'length_conversion' %}" class="btn">Length Converter</a>
+            <a href="{% url 'weight_conversion' %}" class="btn">Weight Converter</a>
+            <a href="{% url 'temperature_conversion' %}" class="btn">Temperature Converter</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Debjoy Sarkar. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
